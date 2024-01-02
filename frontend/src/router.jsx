@@ -12,6 +12,7 @@ import {
 } from '@pages';
 
 import eventsLoader from '@loaders/eventsLoader.js';
+import detailLoader from '@loaders/eventDetailLoader.js';
 
 export const router = createBrowserRouter([
   {
@@ -21,12 +22,8 @@ export const router = createBrowserRouter([
         path: 'events',
         element: <EventsRootLayout />,
         children: [
-          {
-            index: true,
-            element: <EventsPage />,
-            loader: eventsLoader,
-          },
-          { path: ':id', element: <EventDetailPage /> },
+          { index: true, element: <EventsPage />, loader: eventsLoader },
+          { path: ':id', element: <EventDetailPage />, loader: detailLoader },
           { path: 'new', element: <NewEventPage /> },
           { path: ':id/edit', element: <EditEventPage /> },
         ],

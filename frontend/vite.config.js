@@ -15,6 +15,7 @@ export default defineConfig({
       '@loaders': path.resolve(__dirname, './src/loaders'),
       '@pages': path.resolve(__dirname, './src/pages'),
       '@store': path.resolve(__dirname, './src/store'),
+      '@actions': path.resolve(__dirname, './src/actions'),
     },
   },
 });

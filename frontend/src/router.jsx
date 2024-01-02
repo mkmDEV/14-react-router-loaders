@@ -13,9 +13,14 @@ import {
 
 import eventsLoader from '@loaders/eventsLoader.js';
 import detailLoader from '@loaders/eventDetailLoader.js';
+import manipulateEventAction from '@actions/newEventAction.js';
+import deleteEventAction from '@actions/deleteEventAction.js';
 
 export const router = createBrowserRouter([
   {
+    path: '/',
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       {
@@ -23,14 +28,30 @@ export const router = createBrowserRouter([
         element: <EventsRootLayout />,
         children: [
           { index: true, element: <EventsPage />, loader: eventsLoader },
-          { path: ':id', element: <EventDetailPage />, loader: detailLoader },
-          { path: 'new', element: <NewEventPage /> },
-          { path: ':id/edit', element: <EditEventPage /> },
+          {
+            path: ':id',
+            id: 'event',
+            loader: detailLoader,
+            children: [
+              {
+                index: true,
+                element: <EventDetailPage />,
+                action: deleteEventAction,
+              },
+              {
+                path: 'edit',
+                element: <EditEventPage />,
+                action: manipulateEventAction,
+              },
+            ],
+          },
+          {
+            path: 'new',
+            element: <NewEventPage />,
+            action: manipulateEventAction,
+          },
         ],
       },
     ],
-    element: <RootLayout />,
-    errorElement: <ErrorPage />,
-    path: '/',
   },
 ]);

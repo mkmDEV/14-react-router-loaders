@@ -15,18 +15,27 @@ import {
 
 import eventsLoader from '@loaders/eventsLoader.js';
 import detailLoader from '@loaders/eventDetailLoader.js';
-import manipulateEventAction from '@actions/newEventAction.js';
+
+import authAction from '@actions/authAction.js';
 import deleteEventAction from '@actions/deleteEventAction.js';
+import manipulateEventAction from '@actions/newEventAction.js';
 import newsletterAction from '@actions/newsletterAction.js';
+import logout from '@actions/logoutAction.js';
+
+import { authToken, checkAuth } from '@util/auth.js';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
     errorElement: <ErrorPage />,
+    id: 'root',
+    loader() {
+      return authToken();
+    },
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'auth', element: <AuthPage /> },
+      { path: 'auth', element: <AuthPage />, action: authAction },
       {
         path: 'events',
         element: <EventsRootLayout />,
@@ -41,7 +50,7 @@ export const router = createBrowserRouter([
                 index: true,
                 element: <EventDetailPage />,
                 action: deleteEventAction,
-                loader: eventsLoader,
+                loader: eventsLoader, // fixme: add auth check
               },
               {
                 path: 'edit',
@@ -54,6 +63,7 @@ export const router = createBrowserRouter([
             path: 'new',
             element: <NewEventPage />,
             action: manipulateEventAction,
+            loader: checkAuth,
           },
         ],
       },
@@ -62,6 +72,7 @@ export const router = createBrowserRouter([
         element: <NewsletterPage />,
         action: newsletterAction,
       },
+      { path: 'logout', action: logout },
     ],
   },
 ]);

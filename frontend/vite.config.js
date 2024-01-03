@@ -8,6 +8,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      '@UI': path.resolve(__dirname, './src/UI'),
+      '@actions': path.resolve(__dirname, './src/actions'),
       '@assets': path.resolve(__dirname, './src/assets'),
       '@components': path.resolve(__dirname, './src/components'),
       '@data': path.resolve(__dirname, './src/data'),
@@ -15,8 +17,7 @@ export default defineConfig({
       '@loaders': path.resolve(__dirname, './src/loaders'),
       '@pages': path.resolve(__dirname, './src/pages'),
       '@store': path.resolve(__dirname, './src/store'),
-      '@actions': path.resolve(__dirname, './src/actions'),
-      '@UI': path.resolve(__dirname, './src/UI'),
+      '@util': path.resolve(__dirname, './src/util'),
     },
   },
 });

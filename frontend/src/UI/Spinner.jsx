@@ -1,4 +1,5 @@
 import classes from './Spinner.module.css';
+
 export const Spinner = () => (
   <div className={classes.spinner} data-layer="4">
     <div className={classes['spinner-container']}>

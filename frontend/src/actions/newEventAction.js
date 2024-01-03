@@ -1,4 +1,5 @@
 import { json, redirect } from 'react-router-dom';
+import { authToken } from '@util/auth';
 
 export default async ({ request, params }) => {
   const data = await request.formData();
@@ -17,6 +18,7 @@ export default async ({ request, params }) => {
     method: request.method,
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
     },
     body: JSON.stringify(eventData),
   });

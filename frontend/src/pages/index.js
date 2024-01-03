@@ -1,3 +1,4 @@
+import { AuthPage } from './Auth';
 import { EditEventPage } from './EditEvent';
 import { ErrorPage } from './Error';
 import { EventDetailPage } from './EventDetail';
@@ -9,6 +10,7 @@ import { NewsletterPage } from './Newsletter';
 import { RootLayout } from './RootLayout';
 
 export {
+  AuthPage,
   EditEventPage,
   ErrorPage,
   EventDetailPage,

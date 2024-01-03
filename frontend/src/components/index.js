@@ -1,3 +1,4 @@
+import { AuthForm } from './AuthForm';
 import EventForm from './EventForm';
 import EventItem from './EventItem';
 import EventsList from './EventsList';
@@ -7,6 +8,7 @@ import { NewsletterSignup } from './NewsletterSignup';
 import { PageContent } from './PageContent';
 
 export {
+  AuthForm,
   EventForm,
   EventItem,
   EventsList,

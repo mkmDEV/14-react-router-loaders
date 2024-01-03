@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import {
+  AuthPage,
   EditEventPage,
   ErrorPage,
   EventDetailPage,
@@ -25,6 +26,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
+      { path: 'auth', element: <AuthPage /> },
       {
         path: 'events',
         element: <EventsRootLayout />,

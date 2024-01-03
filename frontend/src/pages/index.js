@@ -5,6 +5,7 @@ import { EventsPage } from './Events';
 import { EventsRootLayout } from './EventsRootLayout';
 import { HomePage } from './Home';
 import { NewEventPage } from './NewEvent';
+import { NewsletterPage } from './Newsletter';
 import { RootLayout } from './RootLayout';
 
 export {
@@ -15,5 +16,6 @@ export {
   EventsRootLayout,
   HomePage,
   NewEventPage,
+  NewsletterPage,
   RootLayout,
 };

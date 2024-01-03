@@ -8,6 +8,7 @@ import {
   EventsRootLayout,
   HomePage,
   NewEventPage,
+  NewsletterPage,
   RootLayout,
 } from '@pages';
 
@@ -15,6 +16,7 @@ import eventsLoader from '@loaders/eventsLoader.js';
 import detailLoader from '@loaders/eventDetailLoader.js';
 import manipulateEventAction from '@actions/newEventAction.js';
 import deleteEventAction from '@actions/deleteEventAction.js';
+import newsletterAction from '@actions/newsletterAction.js';
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +53,11 @@ export const router = createBrowserRouter([
             action: manipulateEventAction,
           },
         ],
+      },
+      {
+        path: 'newsletter',
+        element: <NewsletterPage />,
+        action: newsletterAction,
       },
     ],
   },

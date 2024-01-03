@@ -50,12 +50,13 @@ export const router = createBrowserRouter([
                 index: true,
                 element: <EventDetailPage />,
                 action: deleteEventAction,
-                loader: eventsLoader, // fixme: add auth check
+                loader: eventsLoader,
               },
               {
                 path: 'edit',
                 element: <EditEventPage />,
                 action: manipulateEventAction,
+                loader: checkAuth,
               },
             ],
           },

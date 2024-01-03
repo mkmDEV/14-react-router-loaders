@@ -1,14 +1,17 @@
-import { useLoaderData } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Await, useLoaderData } from 'react-router-dom';
 
 import { EventsList } from '@components';
+import { Spinner } from '@UI/Spinner.jsx';
+
 export const EventsPage = () => {
-  const data = useLoaderData();
+  const { events } = useLoaderData();
 
-  if (data.isError) {
-    return <p>{data.message}</p>;
-  }
-
-  const events = data.events;
-
-  return <EventsList events={events} />;
+  return (
+    <Suspense fallback={<Spinner />}>
+      <Await resolve={events}>
+        {(loadedEvents) => <EventsList events={loadedEvents} />}
+      </Await>
+    </Suspense>
+  );
 };

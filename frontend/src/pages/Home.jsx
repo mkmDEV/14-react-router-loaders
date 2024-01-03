@@ -1,7 +1,7 @@
-export const HomePage = () => {
-  return (
-    <>
-      <h1>HomePage</h1>
-    </>
-  );
-};
+import { PageContent } from '@components';
+
+export const HomePage = () => (
+  <PageContent title={'Welcome!'}>
+    <p>Browse all out amazing events!</p>
+  </PageContent>
+);

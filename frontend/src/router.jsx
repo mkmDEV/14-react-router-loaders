@@ -39,6 +39,7 @@ export const router = createBrowserRouter([
                 index: true,
                 element: <EventDetailPage />,
                 action: deleteEventAction,
+                loader: eventsLoader,
               },
               {
                 path: 'edit',

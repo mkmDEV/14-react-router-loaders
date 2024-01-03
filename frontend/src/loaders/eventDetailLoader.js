@@ -1,7 +1,6 @@
-import { json } from 'react-router-dom';
+import { defer, json } from 'react-router-dom';
 
-export default async ({ params }) => {
-  const { id } = params;
+async function loadEvent(id) {
   const response = await fetch(`http://localhost:8080/events/${id}`);
 
   if (!response.ok) {
@@ -10,6 +9,10 @@ export default async ({ params }) => {
       { status: 500 }
     );
   } else {
-    return response;
+    const { event } = await response.json();
+    return event;
   }
-};
+}
+
+export default async ({ params }) =>
+  defer({ event: await loadEvent(params.id) });
